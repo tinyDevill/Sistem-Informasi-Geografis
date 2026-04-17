@@ -8,4 +8,4 @@
 5. Untuk menjalankan web, jalankan perintah "npm run dev"
 6. Buka di browser "localhost:5173"
 
-# Catatan : Sebelum menjalankan "npm run dev" pastikan Database dan FastAPI sudah berjalan 
+## Catatan : Sebelum menjalankan "npm run dev" pastikan Database dan FastAPI sudah berjalan 
