@@ -20,16 +20,16 @@
 
 # Screenshot
 ## Tampilan layar login
-![layar login](https://drive.google.com/uc?export=view&id=15j1Tzdc02KqXuXC2SuxSc1vJ6KHMNkEd)
+![layar login](https://drive.google.com/uc?export=view&id=1CI6334jaPQw75EpoNEvvVVB-RdidSONp)
 
 ## Tampilan layar login ketika email atau password salah
-![layar login ketika email atau password salah](https://drive.google.com/uc?export=view&id=1W9odCQBlLb3VCoweK3tYej2Yaz9jtPeg)
+![layar login ketika email atau password salah](https://drive.google.com/uc?export=view&id=1gKw0-592sWACfEAskhcS-R5JQPkZ8AWK)
 
 ## Tampilan layar utama map
-![layar utama map](https://drive.google.com/uc?export=view&id=1uWrLeeAFd8_NF3BDUfwDZQlO-dt1YvA6)
+![layar utama map](https://drive.google.com/uc?export=view&id=100-vQ_u53bn_i2eRG9g81ooT9YzEI-Sx)
 
 ## Tampilan layar ketika menambah map
-![layar ketika menambah map](https://drive.google.com/uc?export=view&id=15j1Tzdc02KqXuXC2SuxSc1vJ6KHMNkEd)
+![layar ketika menambah map](https://drive.google.com/uc?export=view&id=1V_lhyfrI9TmXhuKE3CX2pSsQLjnIbHv7)
 
 ## Tampilan layar ketika mengedit map
-![layar ketika mengedit map](https://drive.google.com/uc?export=view&id=1W9odCQBlLb3VCoweK3tYej2Yaz9jtPeg)
+![layar ketika mengedit map](https://drive.google.com/uc?export=view&id=1YWOsHq4dS2LWfMF1TJOYCEHqNJtOfU9H)
