@@ -17,3 +17,19 @@
 9. Buka di browser "localhost:5173"
 
 ## Catatan : Sebelum menjalankan "npm run dev" pastikan Database dan FastAPI sudah berjalan 
+
+# Screenshot
+## Tampilan layar login
+![layar login](https://drive.google.com/uc?export=view&id=15j1Tzdc02KqXuXC2SuxSc1vJ6KHMNkEd)
+
+## Tampilan layar login ketika email atau password salah
+![layar login ketika email atau password salah](https://drive.google.com/uc?export=view&id=1W9odCQBlLb3VCoweK3tYej2Yaz9jtPeg)
+
+## Tampilan layar utama map
+![layar utama map](https://drive.google.com/uc?export=view&id=1uWrLeeAFd8_NF3BDUfwDZQlO-dt1YvA6)
+
+## Tampilan layar ketika menambah map
+![layar ketika menambah map](https://drive.google.com/uc?export=view&id=15j1Tzdc02KqXuXC2SuxSc1vJ6KHMNkEd)
+
+## Tampilan layar ketika mengedit map
+![layar ketika mengedit map](https://drive.google.com/uc?export=view&id=1W9odCQBlLb3VCoweK3tYej2Yaz9jtPeg)
