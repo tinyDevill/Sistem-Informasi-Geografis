@@ -9,6 +9,7 @@ export default function MapView() {
   const [nama, setNama] = useState('')
   const [jenis, setJenis] = useState('')
   const [alamat, setAlamat] = useState('')
+  const [editId, setEditId] = useState(null)
 
   const fetchData = async () => {
     const res = await api.get('/api/fasilitas')
@@ -19,24 +20,57 @@ export default function MapView() {
     fetchData()
   }, [])
 
+  // RESET FORM
+  function resetForm() {
+    setNama('')
+    setJenis('')
+    setAlamat('')
+    setSelectedPos(null)
+    setEditId(null)
+  }
+
   // DELETE
-  async function deleteData(id) {
-    await api.delete(`/api/fasilitas/${id}`)
+  async function deleteData() {
+    if (!confirm("Yakin hapus data ini?")) return
+
+    await api.delete(`/api/fasilitas/${editId}`)
+
+    resetForm()
     fetchData()
   }
 
   // UPDATE
-  async function updateData(id) {
-    await api.put(`/api/fasilitas/${id}`, {
-      nama: "Updated dari React"
-    })
-    fetchData()
+  async function updateData() {
+    try {
+      if (!nama || !jenis || !alamat) {
+        alert("Semua field harus diisi!")
+        return
+      }
+
+      await api.put(`/api/fasilitas/${editId}`, {
+        nama,
+        jenis,
+        alamat
+      })
+
+      resetForm()
+      fetchData()
+
+    } catch (err) {
+      console.error(err)
+      alert("Gagal update data!")
+    }
   }
 
   // CREATE
   async function addData() {
     if (!selectedPos) {
       alert("Klik peta dulu untuk pilih lokasi!")
+      return
+    }
+
+    if (!nama || !jenis || !alamat) {
+      alert("Semua field harus diisi!")
       return
     }
 
@@ -48,11 +82,6 @@ export default function MapView() {
       latitude: selectedPos.lat
     })
 
-    if (!nama || !jenis || !alamat) {
-      alert("Semua field harus diisi!")
-      return
-    }
-
     // reset
     setNama('')
     setJenis('')
@@ -62,10 +91,11 @@ export default function MapView() {
     fetchData()
   }
 
-  function MapClickHandler({ setSelectedPos }) {
+  function MapClickHandler({ setSelectedPos, resetForm }) {
     useMapEvents({
       click(e) {
-        setSelectedPos(e.latlng)
+        resetForm() // keluar dari edit mode dan mengkosongkan form
+        setSelectedPos(e.latlng) // set posisi baru
       }
     })
     return null
@@ -82,6 +112,10 @@ export default function MapView() {
       borderRadius: '12px',
       width: '300px',
       boxShadow: '0 4px 15px rgba(0,0,0,0.15)'
+    },
+    title: {
+      color: editId ? 'orange' : 'green',
+      marginTop: '5px'
     },
     input: {
       width: '91%',
@@ -103,6 +137,16 @@ export default function MapView() {
       fontSize: '12px',
       marginBottom: '10px',
       color: '#555'
+    },
+    deleteButton: {
+      width: '100%',
+      padding: '10px',
+      background: '#e74c3c',
+      color: 'white',
+      border: 'none',
+      borderRadius: '6px',
+      cursor: 'pointer',
+      marginTop: '10px'
     }
   }
 
@@ -111,7 +155,7 @@ export default function MapView() {
       {/* tombol tambah global */}
       <h1>Praktikum 9 SIG Abi Sholihan [123140192]</h1>
       <div style={styles.sidebar}>
-        <h3>Tambah Fasilitas</h3>
+        <h3 style={styles.title}>{editId ? "Edit Fasilitas" : "Tambah Fasilitas"}</h3>
 
         <input
           style={styles.input}
@@ -142,38 +186,52 @@ export default function MapView() {
           <p style={styles.coord}>Klik peta untuk pilih lokasi</p>
         )}
 
-        <button style={styles.button} onClick={addData}>
-          Simpan
+        <button style={styles.button} onClick={editId ? updateData : addData}>
+          {editId ? "Update" : "Simpan"}
         </button>
+        
+        {editId && (
+        <button style={styles.deleteButton} onClick={deleteData}>
+            Hapus
+          </button>
+        )}
       </div>
 
       <MapContainer center={[-5.4, 105.25]} zoom={13} style={{height: "100vh"}}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <MapClickHandler setSelectedPos={setSelectedPos} />
+        <MapClickHandler 
+          setSelectedPos={setSelectedPos} 
+          resetForm={resetForm} 
+        />
         {selectedPos && (
           <Marker position={[selectedPos.lat, selectedPos.lng]}>
             <Popup>Lokasi baru</Popup>
           </Marker>
-        )}
-        
+        )}        
           {data.map((item) => {
-            try {
-              const geom = JSON.parse(item.geom)
-              const [lon, lat] = geom.coordinates
-              
-              return (
-                <Marker key={item.id} position={[lat, lon]}>
-                  <Popup>
-                    <b>{item.nama}</b><br/>
-                    {item.jenis}
-                    {item.alamat}
-                  </Popup>
-                </Marker>
-              )
-            } catch (err) {
-              console.log("Error parsing geom:", item)
-              return null
-            }
+            const geom = JSON.parse(item.geom)
+            const [lon, lat] = geom.coordinates
+
+            return (
+              <Marker
+                key={item.id}
+                position={[lat, lon]}
+                eventHandlers={{
+                  click: () => {
+                    setNama(item.nama)
+                    setJenis(item.jenis)
+                    setAlamat(item.alamat)
+                    setSelectedPos({ lat, lng: lon })
+                    setEditId(item.id)
+                  }
+                }}
+              >
+                <Popup>
+                  <b>{item.nama}</b><br/>
+                  {item.jenis}
+                </Popup>
+              </Marker>
+            )
           })}
       </MapContainer>
     </div>
