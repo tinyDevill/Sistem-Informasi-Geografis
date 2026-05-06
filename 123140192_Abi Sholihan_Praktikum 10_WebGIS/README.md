@@ -1,6 +1,6 @@
 # Nama : Abi Sholihan
 # NIM  : 123140192
-# Cara Menjalankan API:
+# Cara Menjalankan WebGIS:
 1. Unduh atau Fork project ini
 2. Buka folder project di command promt, powershell, ataupun git bash
 3. Lakukan "npm install"
