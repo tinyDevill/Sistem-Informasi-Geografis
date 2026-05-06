@@ -1,0 +1,117 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          212.34536743164062,
+          1166.6429405212402
+        ]
+      },
+      "properties": {
+        "class": "tennis racket",
+        "confidence": 0.766
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          246.15353393554688,
+          755.46337890625
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.558
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          705.7671852111816,
+          963.2052307128906
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.624
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          411.78448486328125,
+          583.1369171142578
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.641
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1048.9259033203125,
+          91.7659912109375
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1052.1947631835938,
+          175.62326049804688
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.691
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          643.6658477783203,
+          210.13058471679688
+        ]
+      },
+      "properties": {
+        "class": "airplane",
+        "confidence": 0.606
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          883.9869995117188,
+          126.14788818359375
+        ]
+      },
+      "properties": {
+        "class": "person",
+        "confidence": 0.278
+      }
+    }
+  ]
+}
